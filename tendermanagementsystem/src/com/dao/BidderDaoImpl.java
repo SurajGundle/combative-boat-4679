@@ -1,10 +1,10 @@
 package com.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.model.Bidder;
@@ -116,14 +116,66 @@ public class BidderDaoImpl implements BidderDao {
 
 	@Override
 	public List<Bidder> getAllBidsOfaTender(String tenderId) {
-		// TODO Auto-generated method stub
-		return null;
+List<Bidder> bidderList = new ArrayList<Bidder>();
+
+		try(Connection con = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("select * from bidder where tid=?");
+			
+			ps.setString(1, tenderId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				Bidder bidder = new Bidder();
+				
+				bidder.setBidAmount(rs.getInt("bidamount"));
+				bidder.setBidDeadline(new java.sql.Date(rs.getDate("deadline").getTime()));
+				bidder.setBidId(rs.getString("bid"));
+				bidder.setBidStatus(rs.getString("status"));
+				bidder.setTenderId(rs.getString("tid"));
+				bidder.setVendorId(rs.getString("vid"));
+				
+				bidderList.add(bidder);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bidderList;
 	}
 
 	@Override
 	public List<Bidder> getAllBidsOfaVendor(String vendorId) {
-		// TODO Auto-generated method stub
-		return null;
+List<Bidder> bidderList = new ArrayList<Bidder>();
+
+		try(Connection con = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("select * from bidder where vid=?");
+			
+			ps.setString(1, vendorId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				Bidder bidder = new Bidder();
+				
+				bidder.setBidAmount(rs.getInt("bidamount"));
+				bidder.setBidDeadline(new java.sql.Date(rs.getDate("deadline").getTime()));
+				bidder.setBidId(rs.getString("bid"));
+				bidder.setBidStatus(rs.getString("status"));
+				bidder.setTenderId(rs.getString("tid"));
+				bidder.setVendorId(rs.getString("vid"));
+				
+				bidderList.add(bidder);
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+		return bidderList;
 	}
 
 }
