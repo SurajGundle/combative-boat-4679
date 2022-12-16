@@ -1,0 +1,148 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.model.Tender;
+import com.model.TenderStatus;
+import com.utility.DBUtil;
+
+public class TenderDaoImpl implements TenderDao {
+
+	@Override
+	public List<Tender> getTenderDetails(String tid) {
+List<Tender> tenderList = new ArrayList<Tender>();
+
+		try(Connection con = DBUtil.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("select * from tender where tid=?");
+			
+			ps.setString(1, tid);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				Tender tender = new Tender();
+			String id =  	rs.getString(1);
+			String name=	rs.getString(2);
+			String type=	rs.getString(3);
+			int price   =	    rs.getInt(4);
+			String desc=	rs.getString(5);
+			String deadline=rs.getString(6);
+			String location=rs.getString(7);
+			
+			 tender=new Tender(id, name, type, price, desc, null, location);
+			tenderList.add(tender);
+			}
+			else{
+				PreparedStatement pst = con.prepareStatement("select * from tender where tname like '%"+tid+"%'");
+				
+				ResultSet rss = pst.executeQuery();
+				
+				while(rss.next()){
+					Tender tender = new Tender();
+					String id =  	rss.getString(1);
+					String name=	rss.getString(2);
+					String type=	rss.getString(3);
+					int price   =	rss.getInt(4);
+					String desc=	rss.getString(5);
+					String deadline=rss.getString(6);
+					String location=rss.getString(7);
+					tender=new Tender(tid, name, type, price, desc, null, location);
+					tenderList.add(tender);
+				}
+				
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tenderList;
+	}
+
+	@Override
+	public List<Tender> getAllTenders() {
+List<Tender> tenderList  = new ArrayList<Tender>();
+		
+		Connection con = DBUtil.provideConnection();
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			ps = con.prepareStatement("select * from tender");
+			
+			rs=ps.executeQuery();
+			while(rs.next())
+			{
+				Tender tender=new Tender();
+				tender.se
+				tender.setTId(rs.getString("tid"));
+				tender.setTName(rs.getString("tname"));
+				tender.setTType(rs.getString("ttype"));
+				tender.setTPrice(rs.getInt("tprice"));
+				tender.setTDesc(rs.getString("tdesc"));
+				java.util.Date udate = new java.util.Date(rs.getDate(6).getTime());
+				tender.setDeadline(udate);
+				tender.setLocation(rs.getString("tloc"));
+				tenderList.add(tender);
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	
+		
+		return tenderList;
+	}
+
+	@Override
+	public String createTender(Tender tender) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean removeTender(String tid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String updateTender(Tender tender) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tender getTenderDataById(String tenderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTenderStatus(String tenderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String assignTender(String tenderId, String vendorId, String bidderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TenderStatus> getAllAssignedTenders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

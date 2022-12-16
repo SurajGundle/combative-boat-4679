@@ -1,0 +1,39 @@
+package com.dao;
+
+import java.util.List;
+
+import com.model.Bidder;
+
+public class BidderDaoImpl implements BidderDao {
+
+	@Override
+	public String acceptBid(String applicationId, String tenderId, String vendorId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String rejectBid(String applicationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String bidTender(String tenderId, String vendorId, String bidAmount, String deadline) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bidder> getAllBidsOfaTender(String tenderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bidder> getAllBidsOfaVendor(String vendorId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

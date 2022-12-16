@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.model.Notice"/>
+    <fullyQualifiedTypeName name="com.dao.BidderDao"/>
+    <fullyQualifiedTypeName name="com.dao.TenderDao"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.model.Bidder"/>
+    <fullyQualifiedTypeName name="com.dao.NoticeDao"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.model.Tender"/>
+</qualifiedTypeNameHistroy>
