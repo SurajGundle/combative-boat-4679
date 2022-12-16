@@ -41,6 +41,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\BALAJI\OneDrive\Desktop\SB101\APPLICATIONS\EVAL4_PRACTICE_APP\src\com"/>
+			<item value="C:\Users\BALAJI\OneDrive\Desktop\SB101\APPLICATIONS\EVAL4_PRACTICE_APP"/>
 			<item value="C:\Users\BALAJI\OneDrive\Desktop\TMS Application"/>
 			<item value="C:\Users\BALAJI\OneDrive\Desktop\TMS Application\combative-boat-4679"/>
 		</list>
