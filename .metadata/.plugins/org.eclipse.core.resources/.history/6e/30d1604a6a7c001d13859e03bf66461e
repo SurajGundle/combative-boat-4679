@@ -1,0 +1,75 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.model.Bidder;
+import com.utility.DBUtil;
+
+public class BidderDaoImpl implements BidderDao {
+
+	@Override
+	public String acceptBid(String applicationId, String tenderId, String vendorId) {
+         
+		String msg = "Bid Acceptance Failed";
+	
+		try (Connection con = DBUtil.provideConnection();){
+			
+			PreparedStatement ps = con.prepareStatement("select * from tenderstatus where tid=?");
+			ps.setString(1, tenderId);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				msg = "Project Already Assigned";
+			}
+			else{
+			
+				PreparedStatement pst = con.prepareStatement("update bidder set status = ? where bid=? and status=?");
+				
+				pst.setString(1, "Accepted");
+				pst.setString(2, applicationId);
+				pst.setString(3, "Pending");
+				
+				int x = pst.executeUpdate();
+				if(x>0){
+					msg = "Bid Has Been Accepted Successfully!";
+					TenderDao dao = new TenderDaoImpl();
+					msg = msg + "<br>"+dao.assignTender(tenderId, vendorId,applicationId);
+				}
+			}
+		} catch (SQLException e) {
+
+			msg = msg + "Error: "+e.getMessage();
+			e.printStackTrace();
+		}
+		return msg;
+	}
+
+	@Override
+	public String rejectBid(String applicationId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String bidTender(String tenderId, String vendorId, String bidAmount, String deadline) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bidder> getAllBidsOfaTender(String tenderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bidder> getAllBidsOfaVendor(String vendorId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
