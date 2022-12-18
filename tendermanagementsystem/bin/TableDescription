@@ -1,0 +1,66 @@
+
+
+
+mysql> desc bidder;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| bid       | varchar(15) | NO   | PRI | NULL    |       |
+| vid       | varchar(15) | YES  |     | NULL    |       |
+| tid       | varchar(15) | YES  |     | NULL    |       |
+| bidamount | int         | YES  |     | NULL    |       |
+| deadline  | date        | YES  |     | NULL    |       |
+| status    | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc vendor;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| vid      | varchar(15)  | NO   | PRI | NULL    |       |
+| password | varchar(20)  | YES  |     | NULL    |       |
+| vname    | varchar(30)  | YES  |     | NULL    |       |
+| vmob     | varchar(12)  | YES  |     | NULL    |       |
+| vemail   | varchar(40)  | YES  |     | NULL    |       |
+| company  | varchar(15)  | YES  |     | NULL    |       |
+| address  | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> desc tenderstatus;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| tid    | varchar(15) | NO   | PRI | NULL    |       |
+| bid    | varchar(15) | YES  |     | NULL    |       |
+| status | varchar(15) | NO   |     | NULL    |       |
+| vid    | varchar(15) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc tender;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| tid       | varchar(15)  | NO   | PRI | NULL    |       |
+| tname     | varchar(40)  | YES  |     | NULL    |       |
+| ttype     | varchar(20)  | YES  |     | NULL    |       |
+| tprice    | int          | YES  |     | NULL    |       |
+| tdesc     | varchar(300) | YES  |     | NULL    |       |
+| tdeadline | date         | YES  |     | NULL    |       |
+| tloc      | varchar(70)  | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> desc notice;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| title | varchar(35)  | YES  |     | NULL    |                |
+| info  | varchar(300) | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
