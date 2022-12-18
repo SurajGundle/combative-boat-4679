@@ -71,8 +71,8 @@ public class Tender {
 		return tdeadline;
 	}
 
-	public void setTdeadline(Date tdeadline) {
-		this.tdeadline = tdeadline;
+	public void setTdeadline(java.util.Date udate) {
+		this.tdeadline = (Date) udate;
 	}
 
 	public String getTlocation() {

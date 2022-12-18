@@ -6,7 +6,8 @@ import com.model.Vendor;
 
 public interface VenderDao {
 	
-public String registerVendor(Vendor vendor);
+
+	public String registerVendor(Vendor vendor);
 	
 	public List<Vendor> getAllVendors();
 	
