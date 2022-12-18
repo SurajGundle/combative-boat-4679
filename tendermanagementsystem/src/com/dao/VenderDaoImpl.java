@@ -1,5 +1,5 @@
 package com.dao;
 
-public class VenderDaoImpl {
+public class VenderDaoImpl implements VenderDao {
 
 }
